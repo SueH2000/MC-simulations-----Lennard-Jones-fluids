@@ -1,0 +1,25 @@
+nvt:
+  num_particles: 256
+  density: 0.74
+  epsilon: 1.05
+  sigma: 1.0
+  temperature: 1.0
+  num_iterations: 50000
+  max_displacement: 0.5
+  energy_interval: 500
+  num_samples: 10
+  seed: 0
+  r2_cutoff: 2.5
+
+npt:
+  pressure: 0.023
+  t_star: 0.95238
+  iterations: 20000
+  volume_move_fraction: 0.03
+  bins: 50
+  seed: 0
+
+rdf:
+  dr: 0.05
+  rcut_fraction: 0.9
+
