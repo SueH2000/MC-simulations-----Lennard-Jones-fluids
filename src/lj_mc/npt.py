@@ -14,8 +14,11 @@ def _ua_ur_split(x, y, z, box_length, epsilon=1.05, sigma=1.0, inv_tstar=1.0):
         dz = z[i] - z[i + 1 :]
         dx, dy, dz = apply_pbc(dx, dy, dz, box_length)
         r = np.sqrt(dx * dx + dy * dy + dz * dz)
-        # Avoid r=0; pairs exclude self
-        inv_r6 = (sigma / r) ** 6
+        # Avoid division by zero for extremely close pairs
+        mask = r > 0.0
+        if not np.any(mask):
+            continue
+        inv_r6 = (sigma / r[mask]) ** 6
         ua += np.sum(-4.0 * epsilon * inv_tstar * inv_r6)
         ur += np.sum(4.0 * epsilon * inv_tstar * (inv_r6 ** 2))
     return ua, ur
