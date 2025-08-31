@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.18.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lj-mc"
+version = "0.1.0"
+description = "Lennard–Jones Monte Carlo simulations (NVT/NPT) with CLI and tests"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  { name = "Your Name" }
+]
+dependencies = [
+  "numpy>=1.20",
+  "matplotlib>=3.5",
+  "PyYAML>=6.0",
+]
+
+[project.urls]
+Homepage = "https://example.com/"
+
+[project.scripts]
+lj-mc = "lj_mc.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lj_mc"]
+
